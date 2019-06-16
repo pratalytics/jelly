@@ -10,6 +10,7 @@
 * [ ] Use D3.js in datastudio
 * [ ] Use python and pandas to automate reporting for google analytics
 * [ ] Make use of GTM and Google analytics apis
+* [ ] Do a firebase implementation
 ## Communication
 
 ### Presentation
