@@ -15,4 +15,14 @@
 
 ### Presentation
 ### Email Formats
-### Dashbaords
+* Troubleshooting
+* status update
+* Anamoly Detection
+### Data viz
+
+## Revision
+* [ ] Google Analytics certification
+* [ ] Enhanced ecommerce
+* [ ] Google Tag Manager
+* [ ] Technical documentation
+
