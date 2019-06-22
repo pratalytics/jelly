@@ -26,3 +26,8 @@
 * [ ] Google Tag Manager
 * [ ] Technical documentation
 
+## Setting up the enviornment
+* [ ] Visual studio code
+* [ ] Pycharm
+
+
