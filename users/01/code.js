@@ -8,16 +8,6 @@ function myFunction() {
   gtmResource(wsChangesArr,'tag',tagArr)
   tagResource(tagArr, 'name', tagNameArr)
   
-  /*
-  wsChangesArr.forEach(function (el) {
-    if (el.tag) {
-      tagNameArr.push(el.tag.name)
-    } else if (el.trigger) {
-      triggerNameArr.push(el.trigger.name)
-    } else if (el.variable) {
-      variableNameArr.push(el.variable.name)
-    }
-  })*/
   
   tagQAFun(tagNameArr, tagQATests, tagQAResults)
   Logger.log(tagQAResults)
