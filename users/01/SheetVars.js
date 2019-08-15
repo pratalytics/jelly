@@ -23,10 +23,16 @@ var triggerNameArr = []
 var variableNameArr = []
 
 
+
 var gtmResource = function (wsChangesArr, resource, resourceArr) {
-    wsChangesArr.forEach(function (el) {
-        if (el[resource]) {
-            resourceArr.push(el[resource])
-        }
-    })
+    if (wsChangesArr) {
+        wsChangesArr.forEach(function (el) {
+            if (el[resource]) {
+                resourceArr.push(el[resource])
+            }
+        })
+    } else {
+        SpreadsheetApp.getUi().alert('No Changes in the workspace');
+    }
+    
 }
