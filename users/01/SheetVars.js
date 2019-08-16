@@ -13,11 +13,13 @@ if (gtm_url.indexOf('orgId') > -1) {
 
 var tagSheet = spreadSheet.getSheetByName('tags');
 var triggerSheet = spreadSheet.getSheetByName('triggers');
-var variabaleSheet = spreadSheet.getSheetByName('variables');
+var variableSheet = spreadSheet.getSheetByName('variables');
 var folderSheet = spreadSheet.getSheetByName('folders');
 
 
 var tagArr = []
+var triggerArr = []
+var variableArr = []
 var tagNameArr = []
 var triggerNameArr = []
 var variableNameArr = []
