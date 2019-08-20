@@ -1,16 +1,15 @@
 var spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
-//var overViewSheet = spreadSheet.getSheetByName('overview');
 
 var sheets = {
     overview: spreadSheet.getSheetByName('overview'),
     tag: spreadSheet.getSheetByName('tags'),
     trigger: spreadSheet.getSheetByName('triggers'),
     variable: spreadSheet.getSheetByName('variables'),
-    folder: spreadSheet.getSheetByName('folders')
+    folder: spreadSheet.getSheetByName('folders'),
+  events: spreadSheet.getSheetByName('events')
 }
 
 var gtm_url = sheets.overview.getRange('B2').getValue();
-//var path = gtm_url.substring(gtm_url.indexOf('accounts/'), gtm_url.indexOf('?'));
 var path = ''
 
 if (gtm_url.indexOf('orgId') > -1) {
@@ -22,10 +21,7 @@ if (gtm_url.indexOf('orgId') > -1) {
 
 var workSpace = TagManager.Accounts.Containers.Workspaces.getStatus(path)
 var wsChangesArr = workSpace.workspaceChange
-var tagSheet = spreadSheet.getSheetByName('tags');
-var triggerSheet = spreadSheet.getSheetByName('triggers');
-var variableSheet = spreadSheet.getSheetByName('variables');
-var folderSheet = spreadSheet.getSheetByName('folders');
+
 
 var gtmResources = {
     tag: [],
@@ -41,37 +37,6 @@ var triggerNameArr = []
 var variableNameArr = []
 
 
-/*
-var gtmResource = function (wsChangesArr, resource, resourceArr) {
-    if (wsChangesArr) {
-        wsChangesArr.forEach(function (el) {
-            if (el[resource]) {
-                resourceArr.push(el[resource])
-            }
-        })
-    } else {
-        SpreadsheetApp.getUi().alert('No Changes in the workspace');
-    }
-    
-}
-
-
-var gtmResource = function (wsChangesArr, resourceObj) {
-    if (wsChangesArr) {
-        resource = ['tag', 'trigger', 'variable']
-        wsChangesArr.forEach(function (el) {
-            resource.forEach( function(res) {
-                if (el[res]) {
-                    resourceObj[res].push(el[res])
-                }
-            })
-            
-        })
-    } else {
-        SpreadsheetApp.getUi().alert('No Changes in the workspace');
-    }
-    
-}*/
 
 var gtmResource = function (wsChangesArr, resourceObj) {
     if (wsChangesArr) {
@@ -80,6 +45,11 @@ var gtmResource = function (wsChangesArr, resourceObj) {
             resource.forEach( function(res) {
                 if (el[res]) {
                     el[res]['changeStatus'] = el['changeStatus']
+                    if (el[res]['parentFolderId']) {
+                        el[res]['folderName'] = TagManager.Accounts.Containers.Workspaces.Folders.get(path + '/folders/' + el[res]['parentFolderId'])['name']
+                    } else {
+                        el[res]['folderName'] = 'Unfiled Items'
+                    }
                     resourceObj[res].push(el[res])
                 }
             })
@@ -90,3 +60,4 @@ var gtmResource = function (wsChangesArr, resourceObj) {
     }
     
 }
+
