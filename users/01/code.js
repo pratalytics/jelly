@@ -1,21 +1,24 @@
 function myFunction() {
   
   
-  sheets.overview.getRange('B11').setValue(JSON.stringify(workSpace))
+  //sheets.overview.getRange('B11').setValue(JSON.stringify(workSpace))
   
-  sheets.overview.getRange('B13').setValue(JSON.stringify(wsChangesArr))
+  //sheets.overview.getRange('B13').setValue(JSON.stringify(wsChangesArr))
   
   cleanSheets(sheets)
 
   
 
   gtmResource(wsChangesArr, gtmResources)
-  sheets.overview.getRange('B15').setValue(JSON.stringify(gtmResources))
+  //sheets.overview.getRange('B15').setValue(JSON.stringify(gtmResources))
   
   
   
   displayGTMResources(gtmResources, sheets, "B", "name")
   displayGTMResources(gtmResources, sheets, "D", "changeStatus")
+  displayGTMResources(gtmResources, sheets, "C", "folderName")
+  
+  displayGAEvents(gtmResources, sheets)
   
   /*
   
